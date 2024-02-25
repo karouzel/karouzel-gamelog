@@ -1,0 +1,9 @@
+NUMBER	NAME	RAW	FORMATTED
+1	nikkei	(closed)	0
+2	euromillions	24 27 28 30 49 1 12	24.27.28.30.49.1.12
+3	nasdaq	15,996.82	15996.82
+4	superenalotto	41 43 46 47 63 87	41.43.46.47.63.87
+5	powerball	3 8 40 53 58 3	3
+
+Resulting entropy string:
+0/24.27.28.30.49.1.12/15996.82/41.43.46.47.63.87/3
