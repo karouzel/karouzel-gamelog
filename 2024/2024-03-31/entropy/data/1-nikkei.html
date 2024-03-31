@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="The Nikkei Indexes provide the information regarding all of the indexes calculated by Nikkei Inc., represented by Nikkei Stock Average." />
+    <meta name="keywords" content="Nikkei,225,index,indices" />
+    <title>Historical Data (Nikkei 225) - Nikkei Indexes</title>
+    
+    
+    <script src="/en/nkave/assets/jquery-1.12.4.min.js"></script>
+    <script src="/en/nkave/assets/bootstrap.min.js"></script>
+    <script src="/en/nkave/assets/bootstrap.bundle.min.js"></script>
+    <script src="/en/nkave/assets/jquery-ui.min.js"></script>
+    <script src="/en/nkave/assets/jquery.colorbox-min.js"></script>
+    <script src="/en/nkave/assets/w2ui-1.5.rc1.min.js"></script>
+        <link rel="stylesheet" media="screen, print" href="/en/nkave/assets/kite-color.en.css" />
+    <link rel="stylesheet" media="screen, print" href="/en/nkave/assets/bootstrap.min.css" />
+    <link rel="stylesheet" media="screen, print" href="/en/nkave/assets/bootstrap-icons.css" />
+    <link rel="stylesheet" media="screen, print" href="/en/nkave/assets/colorbox.css" />
+    <link rel="stylesheet" media="screen, print" href="/en/nkave/assets/jquery-ui.min.css" />
+    <link rel="stylesheet" media="screen, print" href="/en/nkave/assets/jquery.jqplot.min.css" />
+    <link rel="stylesheet" media="screen" href="/en/nkave/assets/w2ui-1.5.rc1.min.css" />
+    <link rel="stylesheet" media="screen, print" href="/en/nkave/assets/style-extend-bootstrap-style.css" />
+    <link rel="stylesheet" media="screen, print" href="/en/nkave/assets/style-common-parts.css" />
+    <link rel="stylesheet" media="screen, print" href="/en/nkave/assets/style-global.css" />
+    <link rel="stylesheet" media="screen, print" href="/en/nkave/assets/style-icon.css" />
+    <link rel="stylesheet" media="screen, print" href="/en/nkave/assets/style.css" />
+    
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="YsqKsQybouPi2mwX2edWE/4wr1dcR1Xpkpcha7G/5z25vdWNrG5dL1W5KfEeOkopqmebal+eDUriPnN47T0DNg==" />
+    
+      
+      
+      
+      
+      
+        <script type="text/javascript">
+    function setYear(obj) {
+      document.select.year.value = obj.options[obj.selectedIndex].value;
+    }
+    function setMonth(obj) {
+      document.select.month.value = obj.options[obj.selectedIndex].value;
+    }
+    function monthChanged() {
+      $('#data_list').load('/en/nkave/statistics/dataload'
+                            + '?list=' + document.select.list.value
+                            + '&year=' + document.select.year.value
+                            + '&month=' + document.select.month.value);
+    };
+    function yearChanged(obj) {
+      $('#data_list').load('/en/nkave/statistics/dataload'
+                            + '?list=' + document.select.list.value
+                            + '&year=' + obj.options[obj.selectedIndex].value);
+    };
+    function periodChanged(obj) {
+      $('#data_list').load('/en/nkave/statistics/dataload'
+                            + '?list=' + document.select.list.value
+                            + '&group=' + obj.selectedIndex);
+    };
+  </script>
+
+      
+      
+    
+      
+      
+      
+     
+    
+  </head>
+    
+  <body>
+    
+    
+    
+    <div class="idx-ja">
+        
+        <!-- Sidebar -->
+        <nav class="navbar navbar-expand-lg idx-sidebar sticky-top">
+            
+            <div class="container-fluid px-0">
+                
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#gNav" aria-controls="offcanvasNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                
+                <!-- Brand -->
+                <div class="idx-brand">
+                    <a class="navbar-brand" href="/en/nkave">Nikkei Indexes</a>
+                    <p class="idx-tagline">-Nikkei 225 Official Site-</p>
+                </div>
+                
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="gNav" aria-labelledby="gNavLabel">
+                        
+                        <!-- Navigation header -->
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="gNavLabel">Nikkei Indexes</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        
+                        <!-- Navigation contents -->
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav justify-content-end idx-gnav">
+                                <li class="nav-item"><p class="label">Resources</p></li>
+                                <li class="nav-item"><a class="nav-link " href="/en/nkave/newsroom"><i class="idx-icon icon-news"></i>News&amp;Release</a></li>
+                                <li class="nav-item">
+                                    <div class="nav-item has-sub">
+                                        <span class="nav-link ">
+                                            <i class="idx-icon icon-index"></i><span>Index List</span>
+                                        </span>
+                                        <ul class="nav-subnav">
+                                            <li class="nav-item"><a class="nav-link " href="/en/nkave/index?type=index">Current Values</a></li>
+                                            <li class="nav-item"><a class="nav-link " href="/en/nkave/index?type=download">Download Center</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <div class="nav-item has-sub">
+                                        <span class="nav-link active">
+                                            <i class="idx-icon icon-archive"></i><span>Nikkei 225 Archives</span>
+                                        </span>
+                                        <ul class="nav-subnav">
+                                            <li class="nav-item"><a class="nav-link " href="/en/nkave/archives/summary">Daily Summary</a></li>
+                                            <li class="nav-item"><a class="nav-link active" href="/en/nkave/archives/data">Historical Data in Nikkei 225</a></li>
+                                            <li class="nav-item"><a class="nav-link " href="/en/nkave/archives/record">Records in Nikkei 225</a></li>
+                                            <li class="nav-item"><a class="nav-link " href="/en/nkave/archives/calendar">Winning rate of the day</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="/en/nkave/faq/chronology.html">Chronology</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-item"><a class="nav-link " href="/en/nkave/index/search"><i class="idx-icon icon-search"></i>Index Stock Finder</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/en/nkave/governance/"><i class="idx-icon icon-governance"></i>Governance</a></li>
+                                <li class="nav-item"><p class="label">Utilization</p></li>
+                                <li class="nav-item"><a class="nav-link" href="/en/nkave/license/"><i class="idx-icon icon-license"></i>License</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/en/nkave/data/"><i class="idx-icon icon-data"></i>Index Data</a></li>
+                                <li class="nav-item"><p class="label">Support</p></li>
+                                <li class="nav-item"><a class="nav-link" href="/en/nkave/faq/"><i class="idx-icon icon-faq"></i>FAQ</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/en/nkave/contact/"><i class="idx-icon icon-contact"></i>Contact</a></li>
+                            </ul>
+                            
+                            <!-- Member link -->
+                            <div class="idx-member" id="member">
+                                <a class="idx-member-link" href="/en/nkave/service"><i class="idx-icon icon-lock"></i>&nbsp;For Subscribers</a>
+                            </div>
+                        </div>
+                    </div>
+                
+                <!-- Language switcher md -->
+                <div class="idx-lang-md">
+                    <ul class="lang-switcher lang-md">
+                            <li class="lang-switcher-item active"><span>EN</span></li>
+                            <li class="lang-switcher-item"><a href="/cz/nkave/index/profile" class="lang-switcher-link"><span>CN</span></a></li>
+                            <li class="lang-switcher-item"><a href="/nkave" class="lang-switcher-link"><span>JA</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Main column -->
+        <div class="idx-main">
+            
+            
+            <nav class="idx-topbar">
+                <div class="container-fluid d-flex justify-content-between align-items-center">
+                    <!-- Breadcrumb -->
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="/en/nkave">Top</a></li>
+                                <li class="breadcrumb-item active">Nikkei 225 Archives</li>
+    <li class="breadcrumb-item active" aria-current="page">Historical Data (Nikkei 225)</li>
+
+                        </ol>
+                    
+                    <!-- Language switcher lg -->
+                    <div class="idx-lang-lg">
+                        <ul class="lang-switcher lang-lg">
+                                <li class="lang-switcher-item active"><span>English</span></li>
+                                <li class="lang-switcher-item"><a href="/cz/nkave/index/profile" class="lang-switcher-link"><span>簡体中文</span></a></li>
+                                <li class="lang-switcher-item"><a href="/nkave" class="lang-switcher-link"><span>日本語</span></a></li>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Page title -->
+            <header class="idx-header">
+                    <div class="idx-header-pagetitle">
+        <div class="container-fluid">
+            <h1 class="idx-header-headding d-flex align-items-center"><i class="idx-icon icon-archive"></i>Historical Data (Nikkei 225)</h1>
+        </div>
+    </div>
+
+            </header>
+            
+            <!-- Contents -->
+            
+
+<main class="flex-lg-1 h-screen">
+    <!-- daily-summary -->
+    <section class="idx-section">
+        <div class="container-fluid">
+            
+            <div class="idx-archive-header">
+                
+                
+<div class="idx-u-menu">
+    <div class="category">
+        <p class="title">Open/High/Low/Close</p>
+        <ul class="list">
+            <li class="list-item"><a class="active" href="/en/nkave/archives/data?list=daily">Daily Data</a></li>
+            <li class="list-item"><a class="" href="/en/nkave/archives/data?list=monthly">Monthly Data</a></li>
+            <li class="list-item"><a class="" href="/en/nkave/archives/data?list=annually">Annually Data</a></li>
+        </ul>
+    </div>
+    <div class="category">
+        <p class="title">Daily Valuation Measures</p>
+        <ul class="list">
+            <li class="list-item"><a class="" href="/en/nkave/archives/data?list=dividend">Dividend Yield</a></li>
+            <li class="list-item"><a class="" href="/en/nkave/archives/data?list=per">P/E</a></li>
+            <li class="list-item"><a class="" href="/en/nkave/archives/data?list=pbr">P/B</a></li>
+            <li class="list-item"><a class="" href="/en/nkave/archives/data?list=tmc">Total Market Cap</a></li>
+            <li class="list-item"><a class="" href="/en/nkave/archives/data?list=tvt">Total Trading Value</a></li>
+            <li class="list-item"><a class="" href="/en/nkave/archives/data?list=currency">In Other Currencies</a></li>
+        </ul>
+    </div>
+</div>
+                
+                <div class="idx-ui-group">
+                    <form name="select" method="get" action="/en/nkave/statistics/dataload">
+                        <input type="hidden" name="list" id="list" value="daily">
+                            <input type="hidden" name="month" id="month" value="3">
+                            <input type="hidden" name="year" id="year" value="2024">
+                    </form>
+                    
+                        
+    <div class="col-sm-2">
+        <select size="1" class="form-select" onchange="setMonth(this);">
+            <!--daily_changing--><option value="1">Jan</option><option value="2">Feb</option><option value="3" selected="selected">Mar</option><option value="4">Apr</option><option value="5">May</option><option value="6">Jun</option><option value="7">Jul</option><option value="8">Aug</option><option value="9">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option>
+        </select>
+    </div>
+    <div class="col-sm-2">
+        <select size="1" class="form-select" onchange="setYear(this);">
+            <!--daily_changing--><option value="1949">1949</option><option value="1950">1950</option><option value="1951">1951</option><option value="1952">1952</option><option value="1953">1953</option><option value="1954">1954</option><option value="1955">1955</option><option value="1956">1956</option><option value="1957">1957</option><option value="1958">1958</option><option value="1959">1959</option><option value="1960">1960</option><option value="1961">1961</option><option value="1962">1962</option><option value="1963">1963</option><option value="1964">1964</option><option value="1965">1965</option><option value="1966">1966</option><option value="1967">1967</option><option value="1968">1968</option><option value="1969">1969</option><option value="1970">1970</option><option value="1971">1971</option><option value="1972">1972</option><option value="1973">1973</option><option value="1974">1974</option><option value="1975">1975</option><option value="1976">1976</option><option value="1977">1977</option><option value="1978">1978</option><option value="1979">1979</option><option value="1980">1980</option><option value="1981">1981</option><option value="1982">1982</option><option value="1983">1983</option><option value="1984">1984</option><option value="1985">1985</option><option value="1986">1986</option><option value="1987">1987</option><option value="1988">1988</option><option value="1989">1989</option><option value="1990">1990</option><option value="1991">1991</option><option value="1992">1992</option><option value="1993">1993</option><option value="1994">1994</option><option value="1995">1995</option><option value="1996">1996</option><option value="1997">1997</option><option value="1998">1998</option><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option><option value="2013">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024" selected="selected">2024</option>
+        </select>
+    </div>
+
+<div class="">
+    <input type="button" class="btn btn-primary" value="View" onclick="monthChanged();">
+</div>
+
+                    
+                    <span class="date position-end">
+                        <!--daily_changing-->Update：Mar/29/2024
+                    </span>
+                </div>
+                
+            </div>
+            
+                
+<div class="idx-archive table-responsive-md" id="data_list">
+    
+    <table class="table table-striped table-hover idx-extend">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Open</th>
+                <th>High</th>
+                <th>Low</th>
+                <th>Close</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                    <td>Mar/01/2024</td>
+                    <td>39,254.69</td>
+                    <td>39,990.23</td>
+                    <td>39,224.64</td>
+                    <td>39,910.82</td>
+                </tr>
+                <tr>
+                    <td>Mar/04/2024</td>
+                    <td>40,201.76</td>
+                    <td>40,314.64</td>
+                    <td>40,001.55</td>
+                    <td>40,109.23</td>
+                </tr>
+                <tr>
+                    <td>Mar/05/2024</td>
+                    <td>39,881.73</td>
+                    <td>40,226.99</td>
+                    <td>39,840.34</td>
+                    <td>40,097.63</td>
+                </tr>
+                <tr>
+                    <td>Mar/06/2024</td>
+                    <td>39,792.37</td>
+                    <td>40,147.77</td>
+                    <td>39,769.04</td>
+                    <td>40,090.78</td>
+                </tr>
+                <tr>
+                    <td>Mar/07/2024</td>
+                    <td>40,331.06</td>
+                    <td>40,472.11</td>
+                    <td>39,518.40</td>
+                    <td>39,598.71</td>
+                </tr>
+                <tr>
+                    <td>Mar/08/2024</td>
+                    <td>39,809.56</td>
+                    <td>39,989.33</td>
+                    <td>39,551.60</td>
+                    <td>39,688.94</td>
+                </tr>
+                <tr>
+                    <td>Mar/11/2024</td>
+                    <td>39,232.14</td>
+                    <td>39,241.28</td>
+                    <td>38,496.66</td>
+                    <td>38,820.49</td>
+                </tr>
+                <tr>
+                    <td>Mar/12/2024</td>
+                    <td>38,470.39</td>
+                    <td>38,841.80</td>
+                    <td>38,271.38</td>
+                    <td>38,797.51</td>
+                </tr>
+                <tr>
+                    <td>Mar/13/2024</td>
+                    <td>39,059.95</td>
+                    <td>39,147.80</td>
+                    <td>38,452.57</td>
+                    <td>38,695.97</td>
+                </tr>
+                <tr>
+                    <td>Mar/14/2024</td>
+                    <td>38,591.73</td>
+                    <td>38,840.33</td>
+                    <td>38,400.17</td>
+                    <td>38,807.38</td>
+                </tr>
+                <tr>
+                    <td>Mar/15/2024</td>
+                    <td>38,548.16</td>
+                    <td>38,808.68</td>
+                    <td>38,519.94</td>
+                    <td>38,707.64</td>
+                </tr>
+                <tr>
+                    <td>Mar/18/2024</td>
+                    <td>38,960.99</td>
+                    <td>39,769.11</td>
+                    <td>38,935.47</td>
+                    <td>39,740.44</td>
+                </tr>
+                <tr>
+                    <td>Mar/19/2024</td>
+                    <td>39,622.58</td>
+                    <td>40,003.60</td>
+                    <td>39,407.50</td>
+                    <td>40,003.60</td>
+                </tr>
+                <tr>
+                    <td>Mar/21/2024</td>
+                    <td>40,511.55</td>
+                    <td>40,823.32</td>
+                    <td>40,452.19</td>
+                    <td>40,815.66</td>
+                </tr>
+                <tr>
+                    <td>Mar/22/2024</td>
+                    <td>40,942.88</td>
+                    <td>41,087.75</td>
+                    <td>40,714.14</td>
+                    <td>40,888.43</td>
+                </tr>
+                <tr>
+                    <td>Mar/25/2024</td>
+                    <td>40,798.96</td>
+                    <td>40,837.18</td>
+                    <td>40,414.12</td>
+                    <td>40,414.12</td>
+                </tr>
+                <tr>
+                    <td>Mar/26/2024</td>
+                    <td>40,345.04</td>
+                    <td>40,529.53</td>
+                    <td>40,280.85</td>
+                    <td>40,398.03</td>
+                </tr>
+                <tr>
+                    <td>Mar/27/2024</td>
+                    <td>40,517.17</td>
+                    <td>40,979.36</td>
+                    <td>40,452.21</td>
+                    <td>40,762.73</td>
+                </tr>
+                <tr>
+                    <td>Mar/28/2024</td>
+                    <td>40,324.42</td>
+                    <td>40,482.02</td>
+                    <td>40,054.06</td>
+                    <td>40,168.07</td>
+                </tr>
+                <tr>
+                    <td>Mar/29/2024</td>
+                    <td>40,277.45</td>
+                    <td>40,521.71</td>
+                    <td>40,268.11</td>
+                    <td>40,369.44</td>
+                </tr>
+        </tbody>
+    </table>
+    
+    
+</div>
+
+            
+        </div>
+    </section>
+</main>
+
+            
+            <!-- Application -->
+                
+<aside class="idx-section idx-bg-gray">
+    <div class="container-fluid idx-application">
+        <div class="row row-cols-1 row-cols-md-2 g-3">
+            <div class="col">
+                <div class="">
+                    <h2 class="idx-application-title">Guide to make better use of the Nikkei Indexes</h2>
+                </div>
+            </div>
+            <div class="col">
+                <div class="">
+                    <h3 class="idx-application-subtitle">The most trusted gauge of the stock markets</h3>
+                    <p class="idx-application-text">Nikkei Inc. has developed and calculated its own indexes from various perspective, looking at changes in society and markets. Nikkei Stock Average, the premier and flagship index of Japanese stocks, and other Nikkei Indexes are widely used globally as representative indicators of the Japanese equity market, and financial products linked to the Nikkei Indexes are traded around the world.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-sm h-100">
+                    <img src="/nkave/assets/contract.png" class="card-img-top" alt="License Agreement">
+                    <div class="card-body">
+                        <h3 class="card-title">License Agreement</h3>
+                        <p class="card-text">Nikkei retains all intellectual property rights to the Nikkei Stock Average and other Nikkei Indexes.  In addition to displaying the data on our website and mobile apps, Nikkei guides information on approval procedures for different usage patterns, including display and non-display usage of the indexes,  and creation of financial instruments on the indexes.</p>
+                        <a href="/en/nkave/license/" class="btn btn-primary">More details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-sm h-100">
+                    <img src="/nkave/assets/data_provision.png" class="card-img-top" alt="Provision of index data">
+                    <div class="card-body">
+                        <h3 class="card-title">Provision of index data</h3>
+                            <p class="card-text">This section provides information on the procedures for using basic data in business use such as index constituents stock prices, dividends and weights, which are indispensable for calculating the Nikkei Stock Average, for business use.</p>
+                            <a href="/en/nkave/data/" class="btn btn-primary">More details</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">FAQ</h3>
+                        <p class="card-text">Here you will find answers to your questions about the Nikkei Stock Average and other Nikkei Indexes, as well as licensing agreements and use of this site.</p>
+                        <a href="/en/nkave/faq/" class="btn btn-primary">View all FAQ</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h3 class="card-title">Contact us</h3>
+                            <p class="card-text">Please contact us here for any questions about the Nikkei Indexes, your interest in using the Nikkei Indexes for business purposes and/or any comments about this site.</p>
+                            <a href="/en/nkave/contact/" class="btn btn-primary">Contact us from here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>
+            
+            <!-- Footer -->
+            <footer class="idx-footer">
+                    <nav class="idx-footer-gnav">
+                        <ul class="idx-list">
+                            <li class="list-item"><a class="list-link" href="/en/nkave/newsroom">News&amp;Release</a></li>
+                            <li class="list-item has-sub">
+                                <a class="list-link" role="button" data-bs-toggle="button" style="text-decoration: none;">Index List</a>
+                                <div class="sub-item">
+                                    <ul>
+                                        <li class="list-item"><a class="list-link" href="/en/nkave/index?type=index">Current Values</a></li>
+                                        <li class="list-item"><a class="list-link" href="/en/nkave/index?type=download">Download Center</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="list-item has-sub">
+                                <a class="list-link" role="button" data-bs-toggle="button" style="text-decoration: none;">Nikkei 225 Archives</a>
+                                <div class="sub-item">
+                                    <ul>
+                                        <li class="list-item"><a class="list-link" href="/en/nkave/archives/summary">Daily Summary</a></li>
+                                        <li class="list-item"><a class="list-link" href="/en/nkave/archives/data">Historical Data in Nikkei 225</a></li>
+                                        <li class="list-item"><a class="list-link" href="/en/nkave/archives/record">Records in Nikkei 225</a></li>
+                                        <li class="list-item"><a class="list-link" href="/en/nkave/archives/calendar">Winning rate of the day</a></li>
+                                        <li class="list-item"><a class="list-link" href="/en/nkave/faq/chronology.html">Chronology</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="list-item"><a class="list-link" href="/en/nkave/index/search">Index Stock Finder</a></li>
+                            <li class="list-item"><a class="list-link" href="/en/nkave/governance/">Governance</a></li>
+                            <li class="list-item"><a class="list-link" href="/en/nkave/license/">License</a></li>
+                            <li class="list-item"><a class="list-link" href="/en/nkave/data/">Index Data</a></li>
+                            <li class="list-item"><a class="list-link" href="/en/nkave/faq/">FAQ</a></li>
+                            <li class="list-item"><a class="list-link" href="/en/nkave/contact/">Contact</a></li>
+                        </ul>
+                    </nav>
+                <nav>
+                    <ul class="idx-list idx-lg-list-flat idx-list-col-2">
+                            <li class="list-item"><a class="list-link" href="/en/nkave/sitemap">Sitemap</a></li>
+                            <li class="list-item"><a class="list-link" href="/nkave/archives/file/terms_of_use_en.pdf"  onclick="_gaq.push(['_trackEvent', 'data_EN', '.PDF', 'terms_of_use_en.pdf'])" target="_blank">Term of Use</a></li>
+                        <li class="list-item"><a class="list-link" href="https://www.nikkei.com/lounge/privacy/cookie/optout.html#nikkeipdp">Information Transmission</a></li>
+                            <li class="list-item"><a class="list-link" href="/nkave/archives/file/users_guide_en.pdf" onclick="_gaq.push(['_trackEvent', 'data_EN', '.PDF', 'users_guide_en.pdf'])" target="_blank">User&#39;s Guide</a></li>
+                            <li class="list-item"><a class="list-link" href="http://asia.nikkei.com/">Nikkei Asian&nbsp;<i class="bi bi-box-arrow-up-right"></i></a></li>
+                            <li class="list-item"><a class="list-link" href="https://www.nikkei.co.jp/nikkeiinfo/en/">Nikkei Inc.&nbsp;<i class="bi bi-box-arrow-up-right"></i></a></li>
+                    </ul>
+                </nav>
+                <p class="idx-copyright">
+                    <span class="idx-copyright-brand"><img src="/nkave/assets/cmn_logo_nikkei_01.svg" alt="Nikkei Inc."></span>
+                    <span>No reproduction without permission.</span>
+                </p>
+            </footer>
+            
+            <!--  Utility -->
+            <div class="idx-back-to-top">
+                <a class="idx-back-to-top-link" href="#"><i class="bi bi-arrow-up"></i></a>
+            </div>
+            
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28645102-1']);
+      _gaq.push(['_gat._anonymizeIp']);
+      _gaq.push(['_trackPageview']);
+      
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+      
+      // bfcache対策 
+      window.onpageshow = function(event) {
+        if (event.persisted) {
+          window.location.reload();
+        }
+      };
+      
+      // divlinkのホバー時にアンダーラインをつける
+      $("div.divlink").hover(function(){
+        $(this).addClass("divlink-hover");
+        $("div",this).addClass("divlink-hover");
+      },function(){
+        if($(this).hasClass("divlink-hover")){
+          $(this).removeClass("divlink-hover");
+          $("div",this).removeClass("divlink-hover");
+        }
+      });
+    </script>
+    
+  </body>
+
+</html>
+
