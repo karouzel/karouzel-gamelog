@@ -1,0 +1,5 @@
+1	nikkei	https://indexes.nikkei.co.jp/en/nkave/archives/data
+2	euromillions	https://www.euro-millions.com/results/03-05-2024
+3	nasdaq	https://www.nasdaq.com/market-activity/index/comp/historical
+4	superenalotto	https://www.superenalotto.it/archivio-estrazioni/concorso-71/04-maggio-2024
+5	powerball	https://www.powerball.com/draw-result?gc=powerball&date=2024-05-04
